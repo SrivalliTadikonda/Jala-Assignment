@@ -1,0 +1,131 @@
+def print_career_ten_times():
+    for _ in range(10):
+        print("Bright IT Career")
+
+
+def print_numbers_while():
+    i = 1
+    while i <= 20:
+        print(i, end=' ')
+        i += 1
+    print()
+
+
+def check_equal_not_equal():
+    a, b = 10, 20
+    print("a == b:", a == b)
+    print("a != b:", a != b)
+
+
+def print_odd_even():
+    for i in range(1, 21):
+        if i % 2 == 0:
+            print(f"{i} is Even")
+        else:
+            print(f"{i} is Odd")
+
+
+def largest_among_three(a, b, c):
+    largest = max(a, b, c)
+    print("Largest number is:", largest)
+
+
+def print_even_between_10_and_20():
+    i = 10
+    while i <= 20:
+        if i % 2 == 0:
+            print(i, end=' ')
+        i += 1
+    print()
+
+
+def print_1_to_10_do_while():
+    i = 1
+    while True:
+        print(i, end=' ')
+        i += 1
+        if i > 10:
+            break
+    print()
+
+
+def check_armstrong(num):
+    sum_of_cubes = sum(int(digit) ** 3 for digit in str(num))
+    if num == sum_of_cubes:
+        print(f"{num} is an Armstrong number.")
+    else:
+        print(f"{num} is not an Armstrong number.")
+
+
+def check_prime(num):
+    if num < 2:
+        print(f"{num} is not a Prime number.")
+        return
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            print(f"{num} is not a Prime number.")
+            return
+    print(f"{num} is a Prime number.")
+
+
+def check_palindrome(num):
+    if str(num) == str(num)[::-1]:
+        print(f"{num} is a Palindrome.")
+    else:
+        print(f"{num} is not a Palindrome.")
+
+
+def even_odd_switch(num):
+    match num % 2:
+        case 0:
+            print(f"{num} is Even.")
+        case 1:
+            print(f"{num} is Odd.")
+
+
+def gender_switch(gender):
+    match gender.upper():
+        case 'M':
+            print("Gender: Male")
+        case 'F':
+            print("Gender: Female")
+        case _:
+            print("Invalid input. Please enter M or F.")
+
+
+# --- Run all functions for demonstration ---
+print("1. Print Career 10 Times")
+print_career_ten_times()
+
+print("\n2. Print 1 to 20 Using While Loop")
+print_numbers_while()
+
+print("\n3. Equal and Not Equal Operators")
+check_equal_not_equal()
+
+print("\n4. Print Odd and Even Numbers")
+print_odd_even()
+
+print("\n5. Largest Among Three Numbers")
+largest_among_three(10, 20, 15)
+
+print("\n6. Even Numbers Between 10 and 20 Using While")
+print_even_between_10_and_20()
+
+print("\n7. Print 1 to 10 Using Do-While Equivalent")
+print_1_to_10_do_while()
+
+print("\n8. Check Armstrong Number")
+check_armstrong(153)
+
+print("\n9. Check Prime Number")
+check_prime(29)
+
+print("\n10. Check Palindrome Number")
+check_palindrome(121)
+
+print("\n11. Even or Odd Using Match (Switch Equivalent)")
+even_odd_switch(7)
+
+print("\n12. Gender Based on M/F Input")
+gender_switch('M')

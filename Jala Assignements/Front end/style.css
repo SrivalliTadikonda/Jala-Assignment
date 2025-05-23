@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS All Tasks</title>
+  <style>
+    /* 1. CSS Comments: This stylesheet demonstrates multiple CSS features */
+
+    /* Task 2: Background color and image */
+    body {
+      background-color: #e0f7fa; /* Light blue background */
+      background-image: url('https://via.placeholder.com/800x600'); /* Placeholder image */
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Image does not scroll */
+      background-size: cover; /* Cover the entire screen */
+    }
+
+    /* Task 3: Different border styles on each side */
+    .border-box {
+      border-top: 5px dashed red;
+      border-right: 5px solid blue;
+      border-bottom: 5px dotted green;
+      border-left: 5px double orange;
+      padding: 20px;
+      margin: 20px;
+      background-color: #fff;
+    }
+
+    /* Task 4: Set height and width in px and % */
+    .box-px {
+      width: 300px;
+      height: 150px;
+      background-color: lightgray;
+      margin: 10px;
+    }
+
+    .box-percent {
+      width: 50%;
+      height: 20%;
+      background-color: #c8e6c9;
+      margin: 10px;
+    }
+
+    /* Task 5: Font styles and alignment */
+    .font-style-demo {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: bold;
+      color: darkslateblue;
+      text-align: center;
+      background-color: #fce4ec;
+      padding: 15px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="font-style-demo">CSS All-in-One Demo Page</h2>
+
+  <!-- Task 3: Border box demo -->
+  <div class="border-box">
+    <p>This box has different border styles on each side.</p>
+  </div>
+
+  <!-- Task 4: Height and Width in px -->
+  <div class="box-px">
+    <p>Box with fixed pixel width/height (300px x 150px)</p>
+  </div>
+
+  <!-- Task 4: Height and Width in % -->
+  <div class="box-percent">
+    <p>Box with % based width/height (50% x 20%)</p>
+  </div>
+
+  <!-- Task 5: Font and text style -->
+  <div class="font-style-demo">
+    <p>This text demonstrates different font styles, sizes, colors, and alignment.</p>
+  </div>
+
+</body>
+</html>

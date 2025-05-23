@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Basics</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    button { margin-top: 10px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Basics Examples</h2>
+
+  <!-- Task 1: Comments -->
+  <h3>1. Comments</h3>
+  <pre>
+    // This is a single-line comment
+    /*
+      This is a multi-line comment
+      explaining multiple lines of code
+    */
+  </pre>
+
+  <!-- Task 2: Sort Array Descending -->
+  <h3>2. Sort Fruit Array Descending</h3>
+  <ul id="fruitList"></ul>
+  <button onclick="sortFruitsDesc()">Sort Fruits Descending</button>
+
+  <!-- Task 3: For/In Loop -->
+  <h3>3. For/In Loop</h3>
+  <p id="forInOutput"></p>
+
+  <!-- Task 4: Object Access -->
+  <h3>4. Object Access</h3>
+  <p id="objectAccess1"></p>
+  <p id="objectAccess2"></p>
+
+  <!-- Task 5: Variable Hoisting -->
+  <h3>5. Variable Hoisting</h3>
+  <p id="hoistingOutput"></p>
+
+  <!-- Task 6: Strict Mode -->
+  <h3>6. Strict Mode</h3>
+  <p id="strictOutput"></p>
+
+  <script>
+    // Task 1: Comments
+    // Single-line comment
+    /*
+      Multi-line comment
+      explaining JavaScript features
+    */
+
+    // Task 2: Sort array in descending order
+    let fruits = ["Apple", "Mango", "Banana", "Orange", "Pineapple"];
+    const fruitList = document.getElementById("fruitList");
+    fruits.forEach(f => {
+      const li = document.createElement("li");
+      li.textContent = f;
+      fruitList.appendChild(li);
+    });
+
+    function sortFruitsDesc() {
+      fruits.sort().reverse();
+      fruitList.innerHTML = "";
+      fruits.forEach(f => {
+        const li = document.createElement("li");
+        li.textContent = f;
+        fruitList.appendChild(li);
+      });
+    }
+
+    // Task 3: For/In loop
+    const car = {brand: "Toyota", model: "Corolla", year: 2023};
+    let text = "";
+    for (let key in car) {
+      text += key + ": " + car[key] + "<br>";
+    }
+    document.getElementById("forInOutput").innerHTML = text;
+
+    // Task 4: Object access
+    const person = {
+      firstname: "John",
+      lastname: "Doe"
+    };
+    document.getElementById("objectAccess1").textContent = person.firstname; // Dot notation
+    document.getElementById("objectAccess2").textContent = person["lastname"]; // Bracket notation
+
+    // Task 5: Variable hoisting
+    hoisted = "This works due to hoisting!";
+    document.getElementById("hoistingOutput").textContent = hoisted;
+    var hoisted;
+
+    // Task 6: Strict mode
+    function useStrictDemo() {
+      "use strict";
+      try {
+        undeclaredVar = 10; // ReferenceError in strict mode
+        return "Strict mode passed";
+      } catch (err) {
+        return "Error: " + err.message;
+      }
+    }
+
+    document.getElementById("strictOutput").textContent = useStrictDemo();
+
+  </script>
+
+</body>
+</html>

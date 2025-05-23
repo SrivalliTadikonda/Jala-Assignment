@@ -1,0 +1,43 @@
+# 1. Create a dictionary with 5 student IDs and names
+students = {
+    101: "Alice",
+    102: "Bob",
+    103: "Charlie",
+    104: "David",
+    105: "Eva"
+}
+print("Initial dictionary:", students)
+
+# 1.1 Adding a new key-value pair
+students[106] = "Frank"
+print("\nAfter adding (106: Frank):", students)
+
+# 1.2 Updating a value
+students[102] = "Bobby"
+print("\nAfter updating ID 102:", students)
+
+# 1.3 Accessing a value by key
+student_name = students.get(103)
+print("\nAccessing student with ID 103:", student_name)
+
+# 1.4 Create a nested dictionary (e.g. student info: ID -> {name, age, grade})
+nested_students = {
+    101: {"name": "Alice", "age": 20, "grade": "A"},
+    102: {"name": "Bobby", "age": 21, "grade": "B"},
+    103: {"name": "Charlie", "age": 19, "grade": "A"},
+    104: {"name": "David", "age": 22, "grade": "C"},
+    105: {"name": "Eva", "age": 20, "grade": "B"}
+}
+print("\nNested dictionary:", nested_students)
+
+# 1.5 Access values in nested dictionary
+print("\nAccess nested value - name of ID 104:", nested_students[104]["name"])
+print("Access nested value - grade of ID 105:", nested_students[105]["grade"])
+
+# 1.6 Print all keys of the dictionary
+print("\nKeys in students dictionary:", list(students.keys()))
+print("Keys in nested_students dictionary:", list(nested_students.keys()))
+
+# 1.7 Delete a key-value pair
+del students[106]
+print("\nAfter deleting key 106:", students)

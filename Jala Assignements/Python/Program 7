@@ -1,0 +1,59 @@
+class A:
+    def __init__(self):
+        self.value = 10
+
+    def methodA1(self):
+        print("A: Method A1")
+
+    def methodA2(self):
+        print("A: Method A2")
+
+    def display(self):
+        print("A: Display method (Overridden)")
+
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        self.value = 20
+
+    def methodB1(self):
+        print("B: Method B1")
+
+    def methodB2(self):
+        print("B: Method B2")
+
+    def display(self):
+        print("B: Display method (Overridden)")
+
+
+class C(B):
+    def __init__(self):
+        super().__init__()
+        self.value = 30
+
+    def methodC1(self):
+        print("C: Method C1")
+
+    def methodC2(self):
+        print("C: Method C2")
+
+    def display(self):
+        print("C: Display method (Overridden)")
+
+
+def main():
+    objA = A()
+    objB = B()
+    objC = C()
+
+    print("=== Methods from A ===")
+    objA.methodA1()
+    objA.methodA2()
+    objA.display()
+
+    print("\n=== Methods from B ===")
+    objB.methodA1()
+    objB.methodA2()
+    objB.methodB1()
+    objB.meth

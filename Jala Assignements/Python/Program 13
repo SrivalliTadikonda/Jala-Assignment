@@ -1,0 +1,58 @@
+class MethodOverloadingDemo:
+    # 1. Same name, different number of parameters (all same type assumed int here)
+    def add(self, a, b=None, c=None):
+        if b is None and c is None:
+            print(f"add called with 1 param: {a}")
+            return a
+        elif c is None:
+            print(f"add called with 2 params: {a} + {b} = {a + b}")
+            return a + b
+        else:
+            print(f"add called with 3 params: {a} + {b} + {c} = {a + b + c}")
+            return a + b + c
+
+    # 2. Same name, different number and data types (simulate with type checking)
+    def multiply(self, a, b=None):
+        if b is None:
+            print(f"multiply called with 1 param: {a}")
+            return a
+        else:
+            if isinstance(a, int) and isinstance(b, int):
+                print(f"multiply called with 2 int params: {a} * {b} = {a * b}")
+                return a * b
+            elif isinstance(a, str) and isinstance(b, int):
+                print(f"multiply called with str and int: '{a}' * {b} = '{a * b}'")
+                return a * b
+            else:
+                print("multiply called with unsupported types")
+                return None
+
+    # 3. Same name and same number of parameters (overwriting previous)
+    def display(self, a, b):
+        print(f"display called with a={a} and b={b}")
+
+    # To simulate overload with same number of params and same type, you must use different method names in Python
+    def display_str(self, a, b):
+        print(f"display_str called with strings: '{a}' and '{b}'")
+
+
+# Usage
+obj = MethodOverloadingDemo()
+
+# 1. Different number of params (all int)
+obj.add(5)
+obj.add(5, 10)
+obj.add(5, 10, 15)
+
+print()
+
+# 2. Different data types and number of params
+obj.multiply(4)
+obj.multiply(4, 5)
+obj.multiply("Hi", 3)
+
+print()
+
+# 3. Same number and type of params (simulate by different method names)
+obj.display(1, 2)
+obj.display_str("Hello", "World")

@@ -1,0 +1,53 @@
+from abc import ABC, abstractmethod
+
+# 1. Abstract class
+class AbstractClass(ABC):
+    
+    @abstractmethod
+    def abstract_method(self):
+        pass  # Must be implemented by subclass
+    
+    def non_abstract_method(self):
+        print("This is a non-abstract method in AbstractClass")
+
+# 2. Subclass implementing the abstract method
+class ChildClass(AbstractClass):
+    
+    def __init__(self):
+        # 3. Create instance of child class inside itself (though usually done outside)
+        self.child_instance = ChildClassInner()
+    
+    def abstract_method(self):
+        print("Implemented abstract method in ChildClass")
+    
+    def call_non_abstract(self):
+        # Access non-abstract method from AbstractClass
+        self.non_abstract_method()
+    
+    def call_abstract_method_inner(self):
+        # 4. Call abstract method on inner instance
+        self.child_instance.abstract_method()
+    
+    def call_non_abstract_inner(self):
+        # Call non-abstract method on inner instance
+        self.child_instance.non_abstract_method()
+
+# Helper class to demonstrate calling inside child class (optional)
+class ChildClassInner(ChildClass):
+    pass
+
+if __name__ == "__main__":
+    # Instantiate child class
+    child = ChildClass()
+    
+    # 2. Access non-abstract method of abstract class using child class object
+    print("Calling non-abstract method using child class object:")
+    child.call_non_abstract()
+    
+    # 3. Call abstract method using inner child instance
+    print("\nCalling abstract method using inner child instance:")
+    child.call_abstract_method_inner()
+    
+    # 4. Call non-abstract method using inner child instance
+    print("\nCalling non-abstract method using inner child instance:")
+    child.call_non_abstract_inner()

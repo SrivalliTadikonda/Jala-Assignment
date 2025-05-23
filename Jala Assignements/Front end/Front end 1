@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS All-in-One Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    input {
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body ng-controller="MainCtrl" ng-init="students=['Alice','Bob','Charlie'];">
+
+  <!-- 1. Expression Evaluation & Background Color Change -->
+  <h2>1. Expression Evaluation and Background Color</h2>
+  <input type="text" ng-model="color" placeholder="Enter a color (e.g., red, #00ff00)" style="background-color: {{color}};">
+  <p>Selected Color: {{color}}</p>
+
+  <!-- 2. Directive & Controller from Module -->
+  <h2>2. Directive and Controller</h2>
+  <my-directive></my-directive>
+
+  <!-- 3. Data Binding, ng-model, ng-init, ng-repeat, ng-include -->
+  <h2>3. ng-model, ng-repeat, ng-include</h2>
+  <input type="text" ng-model="name" placeholder="Enter your name">
+  <p>Typed Name: {{name}}</p>
+
+  <h4>Student List (using ng-repeat):</h4>
+  <ul>
+    <li ng-repeat="student in students">{{student}}</li>
+  </ul>
+
+  <div ng-include="'footer.html'"></div>
+
+  <!-- 4. $scope and $rootScope -->
+  <h2>4. Scope Example</h2>
+  <div ng-controller="FirstCtrl">
+    <h3>First Controller</h3>
+    <p>$scope.name: {{name}}</p>
+    <p>$rootScope.globalName: {{globalName}}</p>
+  </div>
+
+  <div ng-controller="SecondCtrl">
+    <h3>Second Controller</h3>
+    <p>$scope.name: {{name}}</p>
+    <p>$rootScope.globalName: {{globalName}}</p>
+  </div>
+
+  <!-- AngularJS App Script -->
+  <script>
+    var app = angular.module('myApp', []);
+
+    // Global root scope initialization
+    app.run(function($rootScope) {
+      $rootScope.globalName = "Global John";
+    });
+
+    // Main Controller
+    app.controller('MainCtrl', function($scope) {
+      $scope.color = "";
+      $scope.name = "";
+    });
+
+    // First Controller
+    app.controller('FirstCtrl', function($scope) {
+      $scope.name = "Local Alice";
+    });
+
+    // Second Controller
+    app.controller('SecondCtrl', function($scope) {
+      $scope.name = "Local Bob";
+    });
+
+    // Directive Example
+    app.directive('myDirective', function() {
+      return {
+        template: '<p>This is a custom directive message using {{globalName}}.</p>'
+      };
+    });
+  </script>
+  <link rel="stylesheet" href="style.css">
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+def add_array(arr):
+    return sum(arr)
+
+def average_array(arr):
+    return sum(arr) / len(arr) if arr else 0
+
+def find_index(arr, value):
+    try:
+        return arr.index(value)
+    except ValueError:
+        return -1
+
+def contains_value(arr, value):
+    return value in arr
+
+def remove_element(arr, value):
+    return [x for x in arr if x != value]
+
+def copy_array(arr):
+    return arr.copy()
+
+def insert_at_position(arr, index, value):
+    arr.insert(index, value)
+    return arr
+
+def min_max_array(arr):
+    return (min(arr), max(arr)) if arr else (None, None)
+
+def reverse_array(arr):
+    return arr[::-1]
+
+def find_duplicates(arr):
+    seen = set()
+    duplicates = set()
+    for x in arr:
+        if x in seen:
+            duplicates.add(x)
+        seen.add(x)
+    return list(duplicates)
+
+def common_elements(arr1, arr2):
+    return list(set(arr1) & set(arr2))
+
+def remove_duplicates(arr):
+    return list(set(arr))
+
+def second_largest(arr):
+    unique = list(set(arr))
+    unique.sort()
+    return unique[-2] if len(unique) >= 2 else None
+
+def count_even_odd(arr):
+    even = sum(1 for x in arr if x % 2 == 0)
+    odd = len(arr) - even
+    return even, odd
+
+def difference_max_min(arr):
+    return max(arr) - min(arr) if arr else 0
+
+def verify_elements(arr, val1, val2):
+    return val1 in arr and val2 in arr
+
+def remove_duplicates_return_new(arr):
+    return list(set(arr))
+
+# --- Test the functions ---
+
+arr = [10, 20, 10, 50, 30, 20, 70, 12, 23]
+
+print("1. Add Array:", add_array(arr))
+print("2. Average:", average_array(arr))
+print("3. Index of 50:", find_index(arr, 50))
+print("4. Contains 23:", contains_value(arr, 23))
+print("5. Remove 20:", remove_element(arr, 20))
+print("6. Copy Array:", copy_array(arr))
+print("7. Insert 99 at position 2:", insert_at_position(arr.copy(), 2, 99))
+print("8. Min and Max:", min_max_array(arr))
+print("9. Reversed Array:", reverse_array(arr))
+print("10. Duplicates:", find_duplicates(arr))
+print("11. Common Elements with [20, 30, 99]:", common_elements(arr, [20, 30, 99]))
+print("12. Remove Duplicates:", remove_duplicates(arr))
+print("13. Second Largest:", second_largest(arr))
+print("14. Second Largest (again):", second_largest(arr))  # Same as above
+even, odd = count_even_odd(arr)
+print(f"15. Even: {even}, Odd: {odd}")
+print("16. Difference between Max and Min:", difference_max_min(arr))
+print("17. Contains 12 and 23:", verify_elements(arr, 12, 23))
+print("18. Remove Duplicates (new array):", remove_duplicates_return_new(arr))

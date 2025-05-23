@@ -1,0 +1,91 @@
+# 1. Class with multiple constructors simulated via default args and classmethods
+class MyClass:
+    # Public constructor (default)
+    def __init__(self, a=None, b=None):
+        if a is None and b is None:
+            print("Default constructor called")
+        elif b is None:
+            print(f"One argument constructor called with a={a}")
+        else:
+            print(f"Two argument constructor called with a={a}, b={b}")
+        self.a = a
+        self.b = b
+
+    # Alternative constructors using classmethods (optional)
+    @classmethod
+    def one_arg_constructor(cls, a):
+        return cls(a)
+
+    @classmethod
+    def two_arg_constructor(cls, a, b):
+        return cls(a, b)
+
+# 2. Superclass and subclass calling constructors
+class SuperClass:
+    def __init__(self, x=None):
+        if x is None:
+            print("SuperClass default constructor")
+        else:
+            print(f"SuperClass argument constructor with x={x}")
+
+class ChildClass(SuperClass):
+    def __init__(self, x=None, y=None):
+        # Call super class constructor with or without arg
+        if x is None:
+            super().__init__()
+        else:
+            super().__init__(x)
+        
+        if y is None:
+            print("ChildClass default constructor")
+        else:
+            print(f"ChildClass argument constructor with y={y}")
+
+# 3. Simulating access modifiers on constructors (Python style)
+class AccessModifierClass:
+    def __init__(self):  # public
+        print("Public constructor")
+
+    def _protected_init(self):  # protected by convention
+        print("Protected constructor (convention)")
+
+    def __private_init(self):  # private (name mangled)
+        print("Private constructor (name mangled)")
+
+    def default_init(self):  # default access (public in Python)
+        print("Default constructor (public in Python)")
+
+    # To demonstrate calling private method inside class
+    def call_private(self):
+        self.__private_init()
+
+# 4. Attributes of a constructor
+class ConstructorAttributes:
+    def __init__(self, name, age):
+        self.name = name    # attribute assigned during construction
+        self.age = age
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+# Main to demonstrate all
+if __name__ == "__main__":
+    print("---- 1. Multiple constructors ----")
+    obj1 = MyClass()
+    obj2 = MyClass.one_arg_constructor(10)
+    obj3 = MyClass.two_arg_constructor(10, 20)
+
+    print("\n---- 2. Superclass and subclass constructors ----")
+    c1 = ChildClass()
+    c2 = ChildClass(100)
+    c3 = ChildClass(100, 200)
+
+    print("\n---- 3. Access modifiers simulation ----")
+    access_obj = AccessModifierClass()
+    access_obj._protected_init()   # works but meant for internal use
+    access_obj.call_private()      # calls private method inside class
+    # access_obj.__private_init()  # would fail: AttributeError
+
+    print("\n---- 4. Constructor attributes ----")
+    person = ConstructorAttributes("Alice", 30)
+    person.display()

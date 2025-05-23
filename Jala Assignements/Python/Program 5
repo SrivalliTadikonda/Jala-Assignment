@@ -1,0 +1,23 @@
+class StaticExample:
+    # 1. Static variable defined at class level
+    static_var = 100
+
+# 1. Access static variable through the class
+print("1. Access through class:", StaticExample.static_var)
+
+# 2. Access static variable through an instance
+obj1 = StaticExample()
+print("2. Access through instance:", obj1.static_var)
+
+# 3. Change static variable through an instance (creates a new instance variable)
+obj1.static_var = 200
+print("3. Change through instance:")
+print("   obj1.static_var =", obj1.static_var)  # 200 (instance-level)
+print("   Class static_var =", StaticExample.static_var)  # still 100
+
+# 4. Change static variable at the class level
+StaticExample.static_var = 300
+print("4. Change through class:")
+print("   obj1.static_var =", obj1.static_var)  # still 200 (unchanged instance-level var)
+print("   New instance static_var =", StaticExample().static_var)  # 300
+print("   Class static_var =", StaticExample.static_var)  # 300

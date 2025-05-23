@@ -1,0 +1,147 @@
+# 1. Generate Arithmetic Exception without handling
+def arithmetic_exception_unhandled():
+    print("1. Arithmetic Exception without handling:")
+    x = 10 / 0  # ZeroDivisionError in Python (like ArithmeticException)
+    print(x)
+
+# 2. Handle Arithmetic Exception using try-except
+def arithmetic_exception_handled():
+    print("\n2. Handle Arithmetic Exception with try-except:")
+    try:
+        x = 10 / 0
+    except ZeroDivisionError as e:
+        print(f"Caught exception: {e}")
+
+# 3. Method which throws exception, call without try (will crash)
+def method_throws_exception():
+    raise ValueError("Exception thrown from method")
+
+# 4. Multiple except blocks
+def multiple_catches():
+    print("\n4. Multiple except blocks:")
+    try:
+        l = [1, 2, 3]
+        print(l[5])  # IndexError
+    except ZeroDivisionError:
+        print("ZeroDivisionError caught")
+    except IndexError:
+        print("IndexError caught")
+    except Exception as e:
+        print(f"General exception caught: {e}")
+
+# 5. Throw exception with your own message
+def throw_exception_with_message():
+    print("\n5. Throw exception with custom message:")
+    raise RuntimeError("This is my custom exception message")
+
+# 6. Create your own exception
+class MyCustomException(Exception):
+    pass
+
+def raise_custom_exception():
+    print("\n6. Raising custom exception:")
+    raise MyCustomException("This is a user-defined exception")
+
+# 7. Program with finally block
+def try_finally_demo():
+    print("\n7. try-finally demo:")
+    try:
+        x = 10 / 2
+        print(f"Result: {x}")
+    finally:
+        print("This will always execute (finally block)")
+
+# 8. Generate Arithmetic Exception
+def generate_arithmetic_exception():
+    print("\n8. Generate Arithmetic Exception:")
+    return 1 / 0
+
+# 9. Generate FileNotFoundException (FileNotFoundError in Python)
+def generate_file_not_found():
+    print("\n9. Generate FileNotFoundException:")
+    with open('non_existent_file.txt', 'r') as f:
+        data = f.read()
+
+# 10. Generate ClassNotFoundException (ImportError in Python)
+def generate_class_not_found():
+    print("\n10. Generate ClassNotFoundException:")
+    import non_existent_module
+
+# 11. Generate IOException (OSError or IOError in Python)
+def generate_io_exception():
+    print("\n11. Generate IOException:")
+    with open('/root/forbidden_file.txt', 'r') as f:  # Permission denied, usually IOError/OSError
+        data = f.read()
+
+# 12. Generate NoSuchFieldException (AttributeError in Python)
+def generate_no_such_field():
+    print("\n12. Generate NoSuchFieldException:")
+    class Sample:
+        pass
+    obj = Sample()
+    print(obj.some_nonexistent_field)
+
+if __name__ == "__main__":
+    # 1.
+    try:
+        arithmetic_exception_unhandled()
+    except ZeroDivisionError as e:
+        print(f"Caught unhandled arithmetic exception: {e}")
+
+    # 2.
+    arithmetic_exception_handled()
+
+    # 3.
+    print("\n3. Calling method that throws exception without try (will crash):")
+    try:
+        method_throws_exception()
+    except ValueError as e:
+        print(f"Caught exception from method: {e}")
+
+    # 4.
+    multiple_catches()
+
+    # 5.
+    try:
+        throw_exception_with_message()
+    except RuntimeError as e:
+        print(f"Caught custom message exception: {e}")
+
+    # 6.
+    try:
+        raise_custom_exception()
+    except MyCustomException as e:
+        print(f"Caught my custom exception: {e}")
+
+    # 7.
+    try_finally_demo()
+
+    # 8.
+    try:
+        generate_arithmetic_exception()
+    except ZeroDivisionError as e:
+        print(f"Caught arithmetic exception: {e}")
+
+    # 9.
+    try:
+        generate_file_not_found()
+    except FileNotFoundError as e:
+        print(f"Caught file not found exception: {e}")
+
+    # 10.
+    try:
+        generate_class_not_found()
+    except ModuleNotFoundError as e:
+        print(f"Caught class/module not found exception: {e}")
+
+    # 11.
+    try:
+        generate_io_exception()
+    except (PermissionError, OSError) as e:
+        print(f"Caught IO exception: {e}")
+
+    # 12.
+    try:
+        generate_no_such_field()
+    except AttributeError as e:
+        print(f"Caught no such field exception: {e}")

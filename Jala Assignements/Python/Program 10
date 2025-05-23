@@ -1,0 +1,27 @@
+# ClassA definition
+class ClassA:
+    def __init__(self):
+        print("ClassA constructor called")
+
+    def method_a(self):
+        print("Method A called")
+
+# ClassB definition
+class ClassB:
+    def __init__(self):
+        print("ClassB constructor called")
+
+    def method_b(self):
+        print("Method B called")
+
+# Main program
+def main():
+    a = ClassA()
+    a.method_a()
+
+    b = ClassB()
+    b.method_b()
+
+if __name__ == "__main__":
+    main()
+

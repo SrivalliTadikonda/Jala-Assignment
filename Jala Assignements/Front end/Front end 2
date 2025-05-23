@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Basics Page</title>
+  <style>
+    /* Pseudo-class example */
+    a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+
+    li::before {
+      content: "👉 ";
+    }
+
+    /* Pseudo-element example */
+    p::first-letter {
+      font-size: 150%;
+      font-weight: bold;
+      color: darkblue;
+    }
+
+    span.highlight:hover {
+      background-color: yellow;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+    }
+
+    nav {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation within page -->
+  <nav>
+    <a href="#section1">Go to Section 1</a> |
+    <a href="#section2">Go to Section 2</a> |
+    <a href="#section3">Go to Section 3</a>
+  </nav>
+
+  <h1>HTML Basics Demonstration</h1>
+  <p>This web page includes all basic HTML tags and features.</p>
+
+  <hr>
+
+  <!-- Section 1 -->
+  <div id="section1">
+    <h2>Section 1: Text and Links</h2>
+    <p>This is a paragraph with <i>italic</i> and <b>bold</b> text.</p>
+    <p>Visit <a href="https://www.example.com" target="_blank">Example.com</a></p>
+    <blockquote cite="https://www.example.com">
+      "This is a blockquote from an external source."
+    </blockquote>
+    <hr>
+  </div>
+
+  <!-- Section 2 -->
+  <div id="section2">
+    <h2>Section 2: Lists and Labels</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="name"><br><br>
+
+    <h3>Unordered List</h3>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+    <hr>
+  </div>
+
+  <!-- Section 3 -->
+  <div id="section3">
+    <h2>Section 3: Images and Layout</h2>
+    <img src="https://via.placeholder.com/150" alt="Placeholder image" width="150" height="150">
+    <div>
+      <p>This text is inside a <code>&lt;div&gt;</code> block.</p>
+    </div>
+    <span class="highlight">Hover over this span to highlight it!</span>
+    <hr>
+  </div>
+
+  <!-- Back to Top -->
+  <p><a href="#top">Back to Top</a></p>
+
+</body>
+</html>

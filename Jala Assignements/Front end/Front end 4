@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="filterApp">
+<head>
+  <title>Filters Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="FilterCtrl">
+
+  <h2>AngularJS Filters</h2>
+
+  <p><strong>Date Filter:</strong> {{ today | date:'fullDate' }}</p>
+  <p><strong>Uppercase:</strong> {{ message | uppercase }}</p>
+  <p><strong>Lowercase:</strong> {{ message | lowercase }}</p>
+  <p><strong>Number:</strong> {{ amount | number:2 }}</p>
+  <p><strong>Custom Reverse Filter:</strong> {{ message | reverse }}</p>
+
+  <script>
+    angular.module('filterApp', [])
+    .controller('FilterCtrl', function($scope) {
+      $scope.today = new Date();
+      $scope.message = "AngularJS Filters";
+      $scope.amount = 123456.789;
+    })
+    .filter('reverse', function() {
+      return function(input) {
+        return input.split('').reverse().join('');
+      };
+    });
+  </script>
+
+</body>
+</html>

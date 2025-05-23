@@ -1,0 +1,50 @@
+import re
+
+# 1. Different ways of creating a string
+str1 = "Hello"
+str2 = str("World")
+str3 = """Multi-line
+String"""
+print("1. Strings:", str1, str2, str3)
+
+# 2. Concatenating two strings using + operator
+concat = str1 + " " + str2
+print("2. Concatenation:", concat)
+
+# 3. Finding the length of the string
+print("3. Length of str1:", len(str1))
+
+# 4. Extract a substring
+substring = str1[1:4]  # 'ell'
+print("4. Substring (1:4):", substring)
+
+# 5. Searching in strings using index()
+try:
+    index = str1.index("l")
+    print("5. Index of 'l' in str1:", index)
+except ValueError:
+    print("Character not found.")
+
+# 6. Matching a string against a regular expression
+pattern = r"^[A-Z][a-z]+$"  # Starts with uppercase followed by lowercase
+match = re.fullmatch(pattern, str1)
+print("6. Regex Match:", bool(match))
+
+# 7. Comparing strings
+print("7. Compare str1 and str2:", str1 == str2)
+
+# 8. startsWith(), endsWith(), and compareTo() alternative
+print("8. startsWith('He'):", str1.startswith("He"))
+print("   endsWith('lo'):", str1.endswith("lo"))
+print("   Lexicographical comparison (str1 vs str2):", (str1 > str2) - (str1 < str2))  # compareTo alternative
+
+# 9. Trimming strings with strip()
+str_with_spaces = "  Hello World  "
+print("9. Trimmed string:", str_with_spaces.strip())
+
+# 10. Replacing characters in strings
+print("10. Replace 'l' with '*':", str1.replace("l", "*"))
+
+# 11. Splitting strings with split()
+csv = "apple,banana,grape"
+print

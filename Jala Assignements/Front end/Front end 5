@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Concepts Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. Table -->
+  <h2>1. Table with Border and Hover Color</h2>
+  <table>
+    <tr><th>Name</th><th>Age</th></tr>
+    <tr><td>Alice</td><td>25</td></tr>
+    <tr><td>Bob</td><td>30</td></tr>
+  </table>
+
+  <!-- 2. Visibility and Display -->
+  <h2>2. Visibility and Display Types</h2>
+  <h3>Visibility</h3>
+  <p class="visible">This is visible</p>
+  <p class="hidden">This is hidden</p>
+  <p class="collapse">This is collapsed (mostly similar to hidden)</p>
+
+  <h3>Display</h3>
+  <span class="none">This is display: none (not shown)</span>
+  <span class="inline">This is inline</span>
+  <div class="block">This is block</div>
+  <div class="contents"><span>This is inside contents</span></div>
+  <li class="list-item">This is a list-item</li>
+
+  <!-- 3. Smooth Scroll Page -->
+  <h2>3. Smooth Scrolling Links</h2>
+  <div id="top"><a href="#bottom">Click to go to bottom of page</a></div>
+  <div class="spacer"></div>
+  <div id="bottom"><a href="#top">Click to go to top of page</a></div>
+
+  <!-- 4. Padding vs Margin -->
+  <h2>4. Padding and Margin</h2>
+  <div class="box">This box has 30px padding and 20px margin.</div>
+  <p>Padding adds space <strong>inside</strong> the border. Margin adds space <strong>outside</strong> the border.</p>
+
+  <!-- 5. Multiple Backgrounds -->
+  <h2>5. Multiple Background Images</h2>
+  <div class="multi-bg">
+    <p>This element has two background images with different sizes and positions.</p>
+  </div>
+
+</body>
+</html>

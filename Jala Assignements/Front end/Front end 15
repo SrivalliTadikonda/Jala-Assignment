@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>AngularJS Combined Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- AngularJS core, route and animate libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #3366cc;
+      font-weight: bold;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-left: 5px;
+    }
+    /* Animation for ng-show/ng-hide */
+    .fade-animation.ng-hide {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .fade-animation.ng-hide-remove {
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="#!/form">Form</a>
+    <a href="#!/toggle">Toggle Animation</a>
+    <a href="#!/unknown">Invalid Route</a>
+  </div>
+
+  <div ng-view></div>
+
+  <script>
+    angular.module('myApp', ['ngRoute', 'ngAnimate'])
+    .config(function($routeProvider) {
+      $routeProvider
+        .when('/form', {
+          template: `
+            <h2>Form Elements & Validation</h2>
+            <form name="myForm" novalidate ng-submit="submitForm()">
+              <label>Name:
+                <input type="text" name="name" ng-model="user.name" required />
+              </label>
+              <span class="error" ng-show="myForm.name.$touched && myForm.name.$invalid">* Required</span>
+              <br><br>
+
+              <label>Email:
+                <input type="email" name="email" ng-model="user.email" required />
+              </label>
+              <span class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">* Valid email required</span>
+              <br><br>
+
+              <label>Gender:</label>
+              <label><input type="radio" name="gender" ng-model="user.gender" value="Male" required /> Male</label>
+              <label><input type="radio" name="gender" ng-model="user.gender" value="Female" /> Female</label>
+              <span class="error" ng-show="myForm.gender.$touched && myForm.gender.$invalid">* Required</span>
+              <br><br>
+
+              <label>Hobbies:</label>
+              <label><input type="checkbox" ng-model="user.hobby.reading" /> Reading</label>
+              <label><input type="checkbox" ng-model="user.hobby.sports" /> Sports</label>
+              <br><br>
+
+              <label>Country:
+                <select name="country" ng-model="user.country" required>
+                  <option value="">--Select--</option>
+                  <option>India</option>
+                  <option>USA</option>
+                  <option>UK</option>
+                </select>
+              </label>
+              <span class="error" ng-show="myForm.country.$touched && myForm.country.$invalid">* Required</span>
+              <br><br>
+
+              <button type="submit" ng-disabled="myForm.$invalid">Submit</button>
+            </form>
+
+            <div ng-if="submitted">
+              <h3>Form Data Submitted:</h3>
+              <pre>{{ user | json }}</pre>
+            </div>
+          `,
+          controller: function($scope) {
+            $scope.user = { hobby: {} };
+            $scope.submitted = false;
+
+            // Custom validation example: name must be at least 3 chars
+            $scope.submitForm = function() {
+              if ($scope.myForm.$valid && $scope.user.name.length >= 3) {
+                $scope.submitted = true;
+              } else {
+                alert('Please fill the form correctly. Name must be at least 3 characters.');
+              }
+            };
+          }
+        })
+        .when('/toggle', {
+          template: `
+            <h2>ng-show/ng-hide Animation</h2>
+            <button ng-click="toggle()">Toggle Message</button>
+            <p class="fade-animation" ng-show="visible">This message is animated on show/hide!</p>
+          `,
+          controller: function($scope) {
+            $scope.visible = true;
+            $scope.toggle = function() {
+              $scope.visible = !$scope.visible;
+            };
+          }
+        })
+        .otherwise({
+          template: `
+            <h2>404 - Page Not Found</h2>
+            <p>The page you are looking for does not exist.</p>
+          `
+        });
+    });
+  </script>
+
+</body>
+</html>

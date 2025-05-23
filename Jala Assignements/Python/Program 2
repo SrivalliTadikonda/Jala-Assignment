@@ -1,0 +1,57 @@
+# 1. Function for Arithmetic Operators
+def arithmetic_operations(a, b):
+    print("Addition:", a + b)
+    print("Subtraction:", a - b)
+    print("Multiplication:", a * b)
+    if b != 0:
+        print("Division:", a / b)
+    else:
+        print("Division: Cannot divide by zero")
+
+# 2. Simulating Increment and Decrement Operators
+def increment_decrement(x):
+    print("Original value:", x)
+    x += 1  # Simulating x++
+    print("After increment:", x)
+    x -= 2  # Simulating x--
+    print("After decrement:", x)
+
+# 3. Check if Two Numbers Are Equal
+def check_equality(a, b):
+    if a == b:
+        print("The numbers are equal.")
+    else:
+        print("The numbers are not equal.")
+
+# 4. Program for Relational Operators
+def relational_operators(a, b):
+    print(f"{a} < {b}:", a < b)
+    print(f"{a} <= {b}:", a <= b)
+    print(f"{a} > {b}:", a > b)
+    print(f"{a} >= {b}:", a >= b)
+
+# 5. Print the Smaller and Larger Number
+def smaller_and_larger(a, b):
+    smaller = min(a, b)
+    larger = max(a, b)
+    print("Smaller number:", smaller)
+    print("Larger number:", larger)
+
+# --- Test the functions ---
+a = 10
+b = 5
+
+print("1. Arithmetic Operations:")
+arithmetic_operations(a, b)
+
+print("\n2. Increment and Decrement Simulation:")
+increment_decrement(a)
+
+print("\n3. Equality Check:")
+check_equality(a, b)
+
+print("\n4. Relational Operators:")
+relational_operators(a, b)
+
+print("\n5. Smaller and Larger Number:")
+smaller_and_larger(a, b)
